@@ -3,11 +3,12 @@
 
 ##用法
 在dom元素上设置data-*属性即可
+   
     //html
     <button 
     type="button" 
     class="btn btn-default" 
-    data-source="remote1.shtml" 
+    data-source="remote.shtml" 
     data-container="#container" 
     data-toggle="dTab">remote1</button>
 
@@ -42,5 +43,3 @@
  * __data-removeable__                  不填默认为false,表示不允许删除；data-removeable="true"添加的tab允许被删除（右上角会出现叉叉）
 
  * __data-theme__     会在#container的dom元素上加一个class，默认值是dTab-primary
- 
-
