@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+  <meta charset="utf-8" />
+  <title>Telenor Open Operational Platform</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  <!-- BEGIN GLOBAL MANDATORY STYLES -->
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/dTab.css" rel="stylesheet" />
+  <!-- END GLOBAL MANDATORY STYLES -->
+
+  <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+  <!-- END PAGE LEVEL PLUGIN STYLES -->
+
+  <!-- BEGIN THEME STYLES -->
+  <!-- END THEME STYLES -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body>
+  <div class="container section" style="margin-top:40px;">
+    <button type="button" class="btn btn-default btn-sm showInNewForm" data-source="remote.shtml" data-container="#container" data-toggle="dTab" data-title="soon" data-removeable="true">remote</button>
+    <button type="button" class="btn btn-default btn-sm showInNewForm" data-limit="true" data-removeable="true" data-source="#t1" data-container="#container" data-toggle="dTab">local & limit</button>
+  </div>
+  <div class="container" style="margin-top:40px;">
+    <div id="container"></div>
+  </div>
+  <div id="t1" style="display:none">
+    <div class="row pdl0">
+      <div class="col-md-4">
+        <div class="form-group">
+          <!--Rule Name-->
+          <label class="control-label i18n">Rule Name</label>
+          <input type="text" stype="string" name="ruleName" value="" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <!--Settlement Direction-->
+          <label class="control-label i18n">Settlement Direction</label>
+          <select class="form-control" data-select="1" name="settlementDirection">
+
+            <option value="1">Operator Pays to Partner</option>
+
+            <option value="2">Partner Pays to Operator</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <!--One-time Charge-->
+          <label class="control-label i18n">One-Time Charge</label>
+          <input type="text" name="oneTimeCharge" value="0" class="form-control" stype="number">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="http://libs.baidu.com/jquery/1.10.0/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="mock.js"></script>
+  <script src="template.js"></script>
+  <script src="../dTab.js"></script>
+  <script type="text/javascript">
+ 
+  </script>
+  <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+
+</html>

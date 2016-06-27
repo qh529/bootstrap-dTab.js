@@ -1,0 +1,143 @@
+<img src="img/spinner.gif" widht="16" height="16" class="dTab-loading">
+<script type="text/html" id="tmpl">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Price Name-->
+        <label class="control-label i18n">1111111</label>
+        <input type="text" class="form-control" value="{{priceName}}">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Tax Type-->
+        <label class="control-label i18n">CNF00000029</label>
+        <input type="text" class="form-control" value="{{taxType}}" >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Effective Date-->
+        <label class="control-label i18n">CNF00000030</label>
+        <input type="text" class="form-control" value="{{effectiveDate}}" >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Subject Type-->
+        <label class="control-label i18n">CNF00000035</label>
+        <input type="text" class="form-control" placeholder="username">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Pricing Subject-->
+        <label class="control-label i18n">CNF00000036</label>
+        <input type="text" class="form-control" value="{{pricingSubject}}" readonly="">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Charging Unit-->
+        <label class="control-label i18n">CNF00000031</label>
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" class="form-control" value="{{chargingUnitNum}}" >
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" value="{{chargingUnitName}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Currency-->
+        <label class="control-label i18n">CNF00000037</label>
+        <input type="text" class="form-control" value="{{currency}}" >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Charge Type-->
+        <label class="control-label i18n">CNF00000039</label>
+        <input type="text" class="form-control" value="{{chargeType}}" >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <!--Charge-->
+        <label class="control-label i18n">CNF00000038</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group">
+              <input type="text" class="form-control" value="{{chargeNum1}}" >
+              <span class="input-group-addon">{{chargeName1}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <input type="text" class="form-control" value="{{chargeNum2}}" >
+              <span class="input-group-addon">{{chargeName2}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <!--Description-->
+        <label class="control-label i18n">CNF00000034</label>
+        <textarea rows="2" class="form-control" >{{description}}</textarea>
+      </div>
+    </div>
+  </div>
+</script>
+<script>
+  $.ajaxSetup({
+    data: Math.random().toString()
+  })
+  var Random = Mock.Random;
+  Mock.setup({
+    timeout: '3000'
+  })
+  Mock.mock(/data.json/, {
+      "priceName": "@word(5,20)",
+      "taxType": "@word(5,20)",
+      "effectiveDate": function() {
+        return Random.datetime('yyyy/MM/dd') + ' - ' + Random.datetime('yyyy/MM/dd')
+      },
+      "subjectType": "@word(5,20)",
+      "pricingSubject": "@word(5,20)",
+      "chargingUnitNum": 1,
+      "chargingUnitName": "Sec",
+      "currency|1": ['Euro', 'DKK', 'HUF', 'DollarCent'],
+      "chargeType|1": ['Simple', 'Ladder'],
+      "chargeNum1": 100,
+      "chargeName1": function() {
+        return this.currency + '/' + this.chargingUnitNum + '*' + this.chargingUnitName
+      },
+      "chargeNum2": 100,
+      "chargeName2": function() {
+        return this.currency
+      },
+      "description": "@paragraph",
+    })
+  $.ajax({
+    url: 'data.json',
+    type: 'post',
+    dataType: 'json'
+  })
+  .done(function(data) {
+        var html = template("tmpl", data);
+        //防止id冲突
+        $('#tmpl').closest('.tab-pane').html(html);
+        $('#tmpl').remove();
+  })
+</script>

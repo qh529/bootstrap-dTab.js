@@ -1,0 +1,46 @@
+/* --------- common --------- */
+
+.dTab-nav a, .dTab-nav a:focus, .dTab-nav a:hover, .dTab-nav a:active {
+    outline: 0;
+}
+.dTab-nav {
+    margin-bottom: 15px;
+}
+.dTab-close {
+    display: none;
+    cursor: pointer;
+}
+.dTab-loading {
+}
+.active>a>span.dTab-close {
+    display: block;
+}
+.active>a.disabled>span.dTab-close {
+    display: none;
+}
+.sl80 {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 80px;
+    text-align: center;
+}
+.dTab-disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+/* --------- theme:dTab-primary --------- */
+
+.dTab-primary .dTab-close {
+    background: url(../img/close.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 1;
+}
+.dTab-primary .dTab-close:hover {
+    background-image: url(../img/close-hover.png);
+}
